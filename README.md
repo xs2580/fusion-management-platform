@@ -55,7 +55,7 @@
 | spring-boot-starter-validation | 随 Spring Boot 管理 | `jakarta.validation` 参数校验 |
 | Lombok | 随 Spring Boot 管理 | 消除样板代码 |
 | HikariCP | 内置 | 数据库连接池 |
-![Uploading image.png…]()
+
 
 ### 前端 `fusion-frontend`
 
