@@ -1,0 +1,84 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
+spring:
+  application:
+    name: fusion-backend
+
+  # ---------------- 数据源 ----------------
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fusion_platform?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  # ---------------- 时间序列化 ----------------
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+  # ---------------- 文件上传（头像用） ----------------
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+# ---------------- MyBatis-Plus ----------------
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.fusion.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      update-strategy: not_null
+
+# ---------------- 业务自定义配置 ----------------
+fusion:
+  jwt:
+    # 生产环境请换成随机长字符串，并放入环境变量
+    secret: fusion-management-platform-jwt-secret-key-2026-please-change-me
+    # token 有效期（秒）默认 2 小时
+    expire: 7200
+    header: Authorization
+    prefix: "Bearer "
+
+  # 跨域允许来源（前后端分离时前端 dev server 地址）
+  cors:
+    allowed-origins: http://localhost:5173,http://127.0.0.1:5173
+
+# ---------------- 接口文档 ----------------
+springdoc:
+  swagger-ui:
+    path: /doc.html
+  api-docs:
+    path: /v3/api-docs
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+logging:
+  level:
+    root: info
+    com.fusion: debug
+    com.fusion.mapper: debug

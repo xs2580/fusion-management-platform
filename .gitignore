@@ -1,0 +1,36 @@
+### 构建产物 ###
+target/
+dist/
+dist-ssr/
+build/
+
+### 依赖 ###
+node_modules/
+.mvn/wrapper/maven-wrapper.jar
+
+### 日志 ###
+*.log
+logs/
+
+### IDE / 编辑器 ###
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+### 系统 ###
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### 本地临时 / 缓存 ###
+.tmp/
+.cache/
+*.local
